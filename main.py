@@ -10,6 +10,8 @@
 from fastapi import FastAPI, Depends, Header, HTTPException
 from fastapi.openapi.utils import get_openapi
 from typing import Optional
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 from models import (
     DictionaryRequest, DictionaryResponse,
@@ -66,6 +68,14 @@ def custom_openapi():
 
 app.openapi = custom_openapi
 
+# ============================================================
+# Mount static files for API docs UI
+# ============================================================
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/")
+async def root():
+    return FileResponse("static/index.html")
 
 # ============================================================
 # DICTIONARY ENDPOINT

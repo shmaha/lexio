@@ -2,6 +2,7 @@ fastapi
 uvicorn
 gunicorn
 python-dotenv
+aiofiles
 
 openai
 google-genai
