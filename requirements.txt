@@ -1,5 +1,7 @@
 fastapi
 uvicorn
-openai
+gunicorn
 python-dotenv
+
+openai
 google-genai

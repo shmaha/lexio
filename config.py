@@ -35,19 +35,14 @@ MIN_WORD_LENGTH = 1
 # --- Supported languages ---
 # Used for validation in the request body
 SUPPORTED_LANGUAGES = [
+    "english",
     "french",
-    "german",
     "spanish",
-    "italian",
     "portuguese",
-    "dutch",
-    "polish",
-    "russian",
-    "arabic",
-    "japanese",
-    "mandarin",
-    "hindi"
 ]
-# --- Default language ---
-# This is the fallback when no language is specified in the request body
-DEFAULT_LANGUAGE = os.getenv("DEFAULT_LANGUAGE", "french")
+
+# --- Language defaults ---
+DEFAULT_DICTIONARY_SOURCE_LANGUAGE = os.getenv("DEFAULT_DICTIONARY_SOURCE_LANGUAGE", "french")
+DEFAULT_DICTIONARY_TARGET_LANGUAGE = os.getenv("DEFAULT_DICTIONARY_TARGET_LANGUAGE", "english")
+DEFAULT_TRANSLATE_SOURCE_LANGUAGE = os.getenv("DEFAULT_TRANSLATE_SOURCE_LANGUAGE", "english")
+DEFAULT_TRANSLATE_TARGET_LANGUAGE = os.getenv("DEFAULT_TRANSLATE_TARGET_LANGUAGE", "french")

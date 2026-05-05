@@ -1,9 +1,5 @@
 # ============================================================
-# providers/__init__.py -- Provider factory
-# ============================================================
-# This is the only place that decides which provider to use.
-# The rest of the application calls get_provider() and never
-# imports OpenAIProvider or GeminiProvider directly.
+# providers/__init__.py -- Provider factory with singleton pattern
 # ============================================================
 
 from providers.base import BaseModelProvider
@@ -11,20 +7,17 @@ from providers.openai_provider import OpenAIProvider
 from providers.gemini_provider import GeminiProvider
 from config import DEFAULT_MODEL_PROVIDER, SUPPORTED_PROVIDERS
 
+# Instantiate providers once at startup -- not per request
+_providers = {
+    "openai": OpenAIProvider(),
+    "gemini": GeminiProvider()
+}
+
 
 def get_provider(provider_name: str = None) -> BaseModelProvider:
     """
-    Factory function -- returns the correct provider instance.
-    
-    Args:
-        provider_name: "openai" or "gemini". 
-                      Falls back to DEFAULT_MODEL_PROVIDER if None.
-    
-    Returns:
-        An instance of the requested provider
-    
-    Raises:
-        ValueError: If provider_name is not in SUPPORTED_PROVIDERS
+    Returns the cached provider instance.
+    No new client is created per request.
     """
     name = (provider_name or DEFAULT_MODEL_PROVIDER).lower()
 
@@ -34,7 +27,4 @@ def get_provider(provider_name: str = None) -> BaseModelProvider:
             f"Supported: {SUPPORTED_PROVIDERS}"
         )
 
-    if name == "openai":
-        return OpenAIProvider()
-    elif name == "gemini":
-        return GeminiProvider()
+    return _providers[name]
