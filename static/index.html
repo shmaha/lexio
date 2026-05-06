@@ -6,1282 +6,907 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Lexio">
-<meta name="theme-color" content="#0f0f0f" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#f5f2ed" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <title>Lexio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   DESIGN: Editorial refinement meets utilitarian precision
-   Playfair Display for identity, DM Mono for data, DM Sans for UI
-   Warm neutrals in light, deep charcoal in dark
-   ============================================================ */
-
 :root {
-  --bg: #f5f2ed;
-  --bg-2: #edeae3;
-  --bg-3: #e3dfd7;
-  --surface: #ffffff;
-  --surface-2: #f0ece5;
-  --border: rgba(0,0,0,0.08);
-  --border-strong: rgba(0,0,0,0.15);
-  --text: #1a1814;
-  --text-2: #4a4540;
-  --text-3: #8a8278;
-  --accent: #2d6a4f;
-  --accent-light: #d8f0e4;
-  --accent-dim: rgba(45,106,79,0.12);
-  --amber: #92400e;
-  --amber-light: #fef3c7;
-  --red: #991b1b;
-  --red-light: #fee2e2;
-  --blue: #1e3a5f;
-  --blue-light: #dbeafe;
-  --shadow: 0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
-  --radius: 14px;
-  --radius-sm: 8px;
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-mono: 'DM Mono', 'Courier New', monospace;
-  --font-ui: 'DM Sans', system-ui, sans-serif;
-  --tab-h: 64px;
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --pink:       #db2777;
+  --pink-dim:   rgba(219,39,119,0.10);
+  --pink-glow:  rgba(219,39,119,0.16);
+  --bg:         #fafafa;
+  --bg-2:       #f0f0f0;
+  --bg-3:       #e4e4e4;
+  --surface:    #ffffff;
+  --surface-2:  #f5f5f5;
+  --border:     rgba(0,0,0,0.08);
+  --border-md:  rgba(0,0,0,0.13);
+  --text:       #111111;
+  --text-2:     #555555;
+  --text-3:     #999999;
+  --amber:      #b45309;
+  --amber-bg:   #fef3c7;
+  --red:        #be123c;
+  --red-bg:     #ffe4e6;
+  --blue:       #1d4ed8;
+  --blue-bg:    #dbeafe;
+  --green:      #15803d;
+  --green-bg:   #dcfce7;
+  --shadow-btn: 0 4px 14px rgba(219,39,119,0.26);
+  --shadow-sm:  0 1px 6px rgba(0,0,0,0.08);
+  --r:  20px;
+  --rl: 26px;
+  --rs: 10px;
+  --font: 'Quicksand', system-ui, sans-serif;
+  --mono: 'DM Mono', monospace;
+  --safe-b: env(safe-area-inset-bottom, 0px);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f0f0f;
-    --bg-2: #161614;
-    --bg-3: #1e1e1b;
-    --surface: #1a1a17;
-    --surface-2: #222220;
-    --border: rgba(255,255,255,0.07);
-    --border-strong: rgba(255,255,255,0.14);
-    --text: #f0ece5;
-    --text-2: #b8b2a8;
-    --text-3: #6e6860;
-    --accent: #4ade80;
-    --accent-light: rgba(74,222,128,0.12);
-    --accent-dim: rgba(74,222,128,0.08);
-    --amber: #fbbf24;
-    --amber-light: rgba(251,191,36,0.10);
-    --red: #f87171;
-    --red-light: rgba(248,113,113,0.10);
-    --blue: #93c5fd;
-    --blue-light: rgba(147,197,253,0.10);
-    --shadow: 0 2px 12px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
-    --shadow-lg: 0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
+    --pink:       #f472b6;
+    --pink-dim:   rgba(244,114,182,0.12);
+    --pink-glow:  rgba(244,114,182,0.18);
+    --bg:         #111111;
+    --bg-2:       #1c1c1c;
+    --bg-3:       #262626;
+    --surface:    #1e1e1e;
+    --surface-2:  #282828;
+    --border:     rgba(255,255,255,0.08);
+    --border-md:  rgba(255,255,255,0.14);
+    --text:       #f0f0f0;
+    --text-2:     #aaaaaa;
+    --text-3:     #666666;
+    --amber:      #fbbf24;
+    --amber-bg:   rgba(251,191,36,0.12);
+    --red:        #fb7185;
+    --red-bg:     rgba(251,113,133,0.12);
+    --blue:       #60a5fa;
+    --blue-bg:    rgba(96,165,250,0.12);
+    --green:      #4ade80;
+    --green-bg:   rgba(74,222,128,0.12);
+    --shadow-btn: 0 4px 14px rgba(244,114,182,0.20);
+    --shadow-sm:  0 1px 6px rgba(0,0,0,0.4);
   }
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
 html, body {
-  height: 100%;
-  overflow: hidden;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-ui);
+  height: 100%; overflow: hidden;
+  background: var(--bg); color: var(--text);
+  font-family: var(--font); font-weight: 500;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---- Layout ---- */
-.app {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-  position: relative;
-}
+.app { display: flex; flex-direction: column; height: 100%; max-width: 480px; margin: 0 auto; }
 
-.header {
-  flex-shrink: 0;
-  padding: 16px 20px 0;
-  background: var(--bg);
-  z-index: 10;
-}
+/* ---- Header ---- */
+.header { flex-shrink: 0; padding: 18px 20px 0; }
 
 .header-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 14px;
 }
 
-.logo {
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: -0.5px;
+.logo { font-size: 20px; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 3px; }
+.logo-accent { color: var(--pink); }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-3); transition: background 0.3s; }
+.dot.ok { background: var(--pink); }
+.dot.error { background: var(--red); }
+
+/* Gear button */
+.gear-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid var(--border-md); background: var(--surface);
+  color: var(--text-3); display: flex; align-items: center;
+  justify-content: center; cursor: pointer; transition: all 0.2s;
 }
-
-.logo span {
-  color: var(--accent);
-  font-style: italic;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--text-3);
-  transition: background 0.3s;
-}
-
-.status-dot.ok { background: var(--accent); }
-.status-dot.error { background: var(--red); }
-
-/* ---- Tabs ---- */
-.tabs {
-  display: flex;
-  gap: 4px;
-  background: var(--bg-2);
-  border-radius: var(--radius-sm);
-  padding: 3px;
-  margin-bottom: 14px;
-}
-
-.tab {
-  flex: 1;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 6px;
-  background: transparent;
-  color: var(--text-3);
-  font-family: var(--font-ui);
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  letter-spacing: 0.02em;
-}
-
-.tab.active {
-  background: var(--surface);
-  color: var(--text);
-  box-shadow: var(--shadow);
-}
-
-/* ---- Input area ---- */
-.input-area {
-  flex-shrink: 0;
-  padding: 0 20px 12px;
-  background: var(--bg);
-}
-
-.lang-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.lang-select {
-  flex: 1;
-  padding: 8px 10px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  color: var(--text);
-  font-family: var(--font-ui);
-  font-size: 13px;
-  appearance: none;
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238a8278' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  padding-right: 28px;
-}
-
-.lang-arrow {
-  color: var(--text-3);
-  font-size: 14px;
-  flex-shrink: 0;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-  transition: color 0.2s;
-  user-select: none;
-}
-
-.lang-arrow:hover { color: var(--accent); }
-
-/* Dictionary shows both source and target */
-.lang-row.dict-row .lang-arrow { color: var(--text-3); cursor: default; }
-
-.input-row {
-  display: flex;
-  gap: 8px;
-  align-items: flex-end;
-}
-
-.word-input {
-  flex: 1;
-  padding: 12px 14px;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  color: var(--text);
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-style: italic;
-  resize: none;
-  min-height: 50px;
-  max-height: 100px;
-  line-height: 1.4;
-  transition: border-color 0.2s;
-  outline: none;
-}
-
-.word-input:focus { border-color: var(--accent); }
-.word-input::placeholder { color: var(--text-3); font-style: italic; }
-
-.icon-btn {
-  width: 46px;
-  height: 46px;
-  border-radius: var(--radius-sm);
-  border: 1.5px solid var(--border);
-  background: var(--surface);
-  color: var(--text-2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  flex-shrink: 0;
-}
-
-.icon-btn:hover { border-color: var(--accent); color: var(--accent); }
-.icon-btn.recording { border-color: var(--red); color: var(--red); background: var(--red-light); }
-
-.submit-btn {
-  width: 46px;
-  height: 46px;
-  border-radius: var(--radius-sm);
-  border: none;
-  background: var(--accent);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  flex-shrink: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  .submit-btn { color: #0f0f0f; }
-}
-
-.submit-btn:hover { opacity: 0.85; transform: scale(0.98); }
-.submit-btn:active { transform: scale(0.95); }
-.submit-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
-/* ---- Scroll area ---- */
-.results {
-  flex: 1;
-  overflow-y: auto;
-  padding: 0 20px;
-  padding-bottom: calc(var(--tab-h) + var(--safe-bottom) + 20px);
-  -webkit-overflow-scrolling: touch;
-}
-
-/* ---- States ---- */
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  gap: 12px;
-  padding-bottom: 80px;
-}
-
-.empty-icon {
-  font-size: 48px;
-  opacity: 0.3;
-}
-
-.empty-text {
-  font-family: var(--font-display);
-  font-size: 18px;
-  color: var(--text-3);
-  font-style: italic;
-  text-align: center;
-}
-
-.loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  gap: 16px;
-}
-
-.spinner {
-  width: 28px;
-  height: 28px;
-  border: 2px solid var(--border);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.loading-word {
-  font-family: var(--font-display);
-  font-style: italic;
-  color: var(--text-3);
-  font-size: 15px;
-}
-
-/* ---- Cards ---- */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  margin-bottom: 10px;
-  overflow: hidden;
-  animation: slideUp 0.3s ease;
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.card-header {
-  padding: 14px 16px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  user-select: none;
-}
-
-.card-title {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-3);
-}
-
-.card-badge {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 20px;
-  font-weight: 500;
-}
-
-.badge-formal { background: var(--blue-light); color: var(--blue); }
-.badge-informal { background: var(--accent-light); color: var(--accent); }
-.badge-slang { background: var(--amber-light); color: var(--amber); }
-.badge-verb { background: var(--blue-light); color: var(--blue); }
-.badge-noun { background: var(--accent-light); color: var(--accent); }
-.badge-adjective { background: var(--amber-light); color: var(--amber); }
-.badge-adverb { background: var(--red-light); color: var(--red); }
-.badge-other { background: var(--surface-2); color: var(--text-3); }
-
-.card-body { padding: 0 16px 14px; }
-
-/* Translation text */
-.translation-main {
-  font-family: var(--font-display);
-  font-size: 22px;
-  color: var(--text);
-  margin-bottom: 6px;
-  line-height: 1.3;
-}
-
-.translation-notes {
-  font-size: 13px;
-  color: var(--text-2);
-  line-height: 1.5;
-}
-
-/* Info chips */
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
-}
-
-.chip {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  font-size: 12px;
-  color: var(--text-2);
-  background: var(--surface-2);
-}
-
-.chip-icon { font-size: 11px; }
-
-/* Expandable sections */
-.expand-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  cursor: pointer;
-  border-top: 1px solid var(--border);
-  user-select: none;
-  transition: background 0.15s;
-}
-
-.expand-row:hover { background: var(--bg-2); }
-
-.expand-label {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-3);
-  flex: 1;
-}
-
-.expand-arrow {
-  font-size: 10px;
-  color: var(--text-3);
-  transition: transform 0.2s;
-}
-
-.expand-arrow.open { transform: rotate(180deg); }
-
-.expand-content {
-  padding: 12px 16px;
-  border-top: 1px solid var(--border);
-  background: var(--bg-2);
-  display: none;
-}
-
-.expand-content.open { display: block; }
-
-.expand-text {
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--text-2);
-}
-
-/* Warning */
-.warning-bar {
-  margin: 0 16px 10px;
-  padding: 10px 12px;
-  border-radius: var(--radius-sm);
-  background: var(--amber-light);
-  border-left: 3px solid var(--amber);
-  font-size: 13px;
-  color: var(--amber);
-  line-height: 1.5;
-}
-
-/* Word result header */
-.result-word {
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 4px;
-}
-
-.result-meta {
-  font-size: 12px;
-  color: var(--text-3);
-  margin-bottom: 14px;
-  font-family: var(--font-mono);
-}
-
-/* Synonyms / antonyms */
-.word-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
-}
-
-.word-chip {
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-family: var(--font-mono);
-  border: 1px solid var(--border);
-  color: var(--text-2);
-  background: var(--surface-2);
-}
-
-.word-chip.antonym {
-  border-color: var(--red-light);
-  color: var(--red);
-  background: var(--red-light);
-}
-
-/* Conjugation table */
-.conj-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 12px;
-  font-family: var(--font-mono);
-}
-
-.conj-table th {
-  text-align: left;
-  padding: 6px 8px;
-  background: var(--bg-3);
-  color: var(--text-3);
-  font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid var(--border);
-}
-
-.conj-table td {
-  padding: 6px 8px;
-  color: var(--text-2);
-  border-bottom: 1px solid var(--border);
-}
-
-.conj-table tr:last-child td { border-bottom: none; }
-
-.conj-table td:first-child {
-  color: var(--text-3);
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  width: 40%;
-}
-
-/* Sentence examples */
-.example {
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.example:last-child { border-bottom: none; }
-
-.example-original {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 15px;
-  color: var(--text);
-  margin-bottom: 4px;
-  line-height: 1.4;
-}
-
-.example-translation {
-  font-size: 13px;
-  color: var(--text-2);
-  margin-bottom: 4px;
-  line-height: 1.5;
-}
-
-.example-situation {
-  font-size: 11px;
-  color: var(--text-3);
-  font-family: var(--font-mono);
-}
-
-.example-tense {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  padding: 1px 6px;
-  border-radius: 3px;
-  background: var(--accent-dim);
-  color: var(--accent);
-  margin-bottom: 6px;
-}
-
-/* Cultural context */
-.cultural-text {
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--text-2);
-}
-
-/* Error card */
-.error-card {
-  background: var(--red-light);
-  border: 1px solid rgba(153,27,27,0.2);
-  border-radius: var(--radius);
-  padding: 16px;
-  margin-bottom: 10px;
-}
-
-.error-title {
-  font-weight: 600;
-  color: var(--red);
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-
-.error-text {
-  font-size: 13px;
-  color: var(--red);
-  opacity: 0.8;
-}
-
-/* No API key state */
-.no-key {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 32px 24px 80px;
-  text-align: center;
-  gap: 12px;
-}
-
-.no-key-icon { font-size: 40px; }
-.no-key-title {
-  font-family: var(--font-display);
-  font-size: 20px;
-  color: var(--text);
-}
-.no-key-text { font-size: 14px; color: var(--text-3); line-height: 1.6; }
-.no-key-code {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  color: var(--text-2);
-  width: 100%;
-  text-align: left;
-  line-height: 1.6;
-}
-
-/* ---- Bottom tab bar ---- */
+.gear-btn:hover { border-color: var(--pink); color: var(--pink); }
+.gear-btn svg { width: 16px; height: 16px; }
+
+/* Hide textarea scrollbar */
+.word-input::-webkit-scrollbar { display: none; }
+.word-input { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* Seamless scrollbar for results */
+.results::-webkit-scrollbar { width: 3px; }
+.results::-webkit-scrollbar-track { background: transparent; }
+.results::-webkit-scrollbar-thumb { background: var(--border-md); border-radius: 10px; }
+.results::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+.results { scrollbar-width: thin; scrollbar-color: var(--border-md) transparent; }
 .tab-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: calc(var(--tab-h) + var(--safe-bottom));
-  padding-bottom: var(--safe-bottom);
-  background: var(--surface);
-  border-top: 1px solid var(--border);
+  flex-shrink: 0;
   display: flex;
-  z-index: 10;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--surface);
+  border-top: 1px solid var(--border-md);
+  padding-bottom: var(--safe-b);
 }
 
 .tab-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  color: var(--text-3);
-  transition: color 0.2s;
-  padding-bottom: 4px;
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 4px; padding: 10px 0;
+  border: none; background: transparent;
+  color: var(--text-3); font-family: var(--font);
+  font-size: 11px; font-weight: 700; cursor: pointer;
+  transition: color 0.2s; letter-spacing: 0.02em;
 }
-
-.tab-item.active { color: var(--accent); }
 
 .tab-item svg { width: 22px; height: 22px; }
+.tab-item.active { color: var(--pink); }
 
-.tab-label {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+/* ---- Settings panel ---- */
+.settings-panel {
+  display: none;
+  background: var(--surface); border: 1.5px solid var(--border-md);
+  border-radius: var(--r); padding: 16px;
+  margin: 0 20px 12px;
+  animation: popIn 0.15s ease;
 }
 
-/* Divider */
-.divider {
-  height: 1px;
-  background: var(--border);
-  margin: 0 16px 10px;
+.settings-panel.open { display: block; }
+
+.settings-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.10em;
+  text-transform: uppercase; color: var(--text-3); margin-bottom: 12px;
 }
 
-/* Section label */
-.section-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-3);
-  padding: 0 16px;
-  margin-bottom: 8px;
-  margin-top: 4px;
+.settings-row {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 12px;
+  margin-bottom: 12px;
 }
+
+.settings-row:last-child { margin-bottom: 0; }
+
+.settings-label { font-size: 13px; font-weight: 600; color: var(--text-2); }
+
+.select-wrap { position: relative; }
+
+.select-wrap select {
+  padding: 7px 28px 7px 12px;
+  border: 1.5px solid var(--border-md);
+  border-radius: var(--r); background: var(--bg-2);
+  color: var(--text); font-family: var(--font);
+  font-size: 13px; font-weight: 600;
+  appearance: none; cursor: pointer; outline: none;
+  transition: border-color 0.15s;
+}
+
+.select-wrap select:focus { border-color: var(--pink); }
+
+.select-wrap::after {
+  content: '';
+  position: absolute; right: 10px; top: 50%;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--text-3);
+  pointer-events: none;
+}
+
+/* Provider toggle */
+.provider-toggle { display: flex; gap: 4px; }
+
+.provider-btn {
+  padding: 6px 14px; border-radius: var(--r);
+  border: 1.5px solid var(--border-md);
+  background: var(--bg-2); color: var(--text-3);
+  font-family: var(--font); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.15s;
+}
+
+.provider-btn.active { border-color: var(--pink); color: var(--pink); background: var(--pink-dim); }
+
+/* ---- Input wrap ---- */
+.input-wrap { padding: 0 20px 14px; }
+
+/* ---- Translate: intent toggle + compact lang ---- */
+.intent-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+
+.intent-pill {
+  display: inline-flex; background: var(--bg-2);
+  border: 1.5px solid var(--border-md); border-radius: 40px;
+  padding: 3px; gap: 2px; flex: 1;
+}
+
+.intent-btn {
+  flex: 1; padding: 7px 10px; border: none; border-radius: 36px;
+  background: transparent; color: var(--text-3);
+  font-family: var(--font); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+
+.intent-btn.active { background: var(--surface); color: var(--pink); box-shadow: var(--shadow-sm); }
+
+/* Compact language selector */
+.lang-compact {
+  position: relative; flex-shrink: 0;
+}
+
+.lang-compact select {
+  padding: 8px 28px 8px 12px;
+  border: 1.5px solid var(--border-md);
+  border-radius: var(--r); background: var(--surface);
+  color: var(--text); font-family: var(--font);
+  font-size: 13px; font-weight: 700;
+  appearance: none; cursor: pointer; outline: none;
+  transition: border-color 0.15s;
+}
+
+.lang-compact select:focus { border-color: var(--pink); }
+
+.lang-compact::after {
+  content: '';
+  position: absolute; right: 10px; top: 50%;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--text-3);
+  pointer-events: none;
+}
+
+/* Dictionary lang bar */
+.dict-lang-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+
+.dict-lang-label { font-size: 13px; font-weight: 600; color: var(--text-2); flex: 1; }
+
+/* ---- Input ---- */
+.input-row { display: flex; gap: 8px; align-items: center; }
+
+.input-container { flex: 1; position: relative; }
+
+.word-input {
+  width: 100%; padding: 13px 44px 13px 16px;
+  border: 1.5px solid var(--border-md); border-radius: var(--rl);
+  background: var(--surface); color: var(--text);
+  font-family: var(--font); font-size: 16px; font-weight: 600;
+  resize: none; overflow: hidden; min-height: 48px; max-height: 100px;
+  line-height: 1.4; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  display: block;
+}
+
+.word-input:focus { border-color: var(--pink); box-shadow: 0 0 0 3px var(--pink-dim); }
+.word-input::placeholder { color: var(--text-3); font-weight: 400; font-size: 14px; }
+
+/* Mic -- vertically centered inside input */
+.mic-inner {
+  position: absolute; right: 12px;
+  top: 50%; transform: translateY(-50%);
+  width: 28px; height: 28px;
+  border-radius: 50%; border: none; background: transparent;
+  color: var(--text-3); display: flex; align-items: center;
+  justify-content: center; cursor: pointer; transition: color 0.15s;
+  padding: 0;
+}
+
+.mic-inner svg { width: 15px; height: 15px; }
+.mic-inner:hover { color: var(--pink); }
+.mic-inner.recording { color: var(--red); }
+
+.go-btn {
+  width: 54px; height: 54px; border-radius: var(--r);
+  border: none; background: var(--pink); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0; transition: all 0.2s;
+  box-shadow: var(--shadow-btn);
+}
+
+.go-btn svg { width: 20px; height: 20px; }
+.go-btn:hover { opacity: 0.88; transform: scale(0.97); }
+.go-btn:active { transform: scale(0.94); }
+.go-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* ---- Results ---- */
+.results {
+  flex: 1; overflow-y: auto;
+  padding: 2px 20px 24px;
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(to bottom, black calc(100% - 40px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 40px), transparent 100%);
+}
+
+/* ---- Empty ---- */
+.empty { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 10px; padding-bottom: 40px; }
+.empty-glyph { width: 52px; height: 52px; border-radius: 50%; background: var(--surface); border: 1.5px solid var(--border-md); display: flex; align-items: center; justify-content: center; color: var(--pink); }
+.empty-glyph svg { width: 22px; height: 22px; }
+.empty-text { font-size: 14px; color: var(--text-3); text-align: center; line-height: 1.6; }
+
+/* ---- Loading ---- */
+.loading { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 200px; gap: 14px; }
+.spinner { width: 26px; height: 26px; border: 2px solid var(--border-md); border-top-color: var(--pink); border-radius: 50%; animation: spin 0.75s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-word { font-family: var(--mono); font-size: 13px; color: var(--text-3); }
+
+@keyframes popIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+@keyframes up { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+/* ---- Result header ---- */
+.res-word { font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.res-meta { font-family: var(--mono); font-size: 10px; color: var(--text-3); margin-bottom: 14px; }
+
+/* ---- Warning ---- */
+.warning { margin-bottom: 10px; padding: 10px 14px; border-radius: var(--r); background: var(--amber-bg); border-left: 3px solid var(--amber); font-size: 13px; color: var(--amber); line-height: 1.5; font-weight: 600; }
+
+/* ---- Translate result card -- all registers visible ---- */
+.trans-card {
+  background: var(--surface); border: 1.5px solid var(--border-md);
+  border-radius: var(--rl); margin-bottom: 10px; animation: up 0.22s ease;
+}
+
+.reg-block { padding: 14px 18px; }
+.reg-block + .reg-block { border-top: 1px solid var(--border); }
+
+.reg-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 5px;
+}
+
+.reg-label.informal { color: var(--pink); }
+.reg-label.formal   { color: var(--blue); }
+.reg-label.slang    { color: var(--amber); }
+
+.reg-translation { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 5px; line-height: 1.3; }
+.reg-translation.lead { font-size: 22px; }
+.reg-notes { font-size: 13px; color: var(--text-2); line-height: 1.6; font-weight: 400; }
+
+/* ---- Cards ---- */
+.card {
+  background: var(--surface); border: 1.5px solid var(--border-md);
+  border-radius: var(--rl); margin-bottom: 10px; animation: up 0.22s ease;
+}
+
+/* Hover with rounded corners */
+.exp-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 18px; cursor: pointer; user-select: none;
+  transition: background 0.15s; border-radius: var(--rl);
+}
+
+.exp-row:hover { background: var(--bg-2); border-radius: var(--rl); }
+
+/* When followed by open body, only round top */
+.exp-row:has(+ .exp-body.open) { border-radius: var(--rl) var(--rl) 0 0; }
+
+.exp-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--pink-dim); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--pink); }
+.exp-icon svg { width: 13px; height: 13px; }
+.exp-label { font-size: 13px; font-weight: 600; color: var(--text-2); flex: 1; }
+.exp-chev { color: var(--text-3); transition: transform 0.2s; }
+.exp-chev svg { width: 14px; height: 14px; }
+.exp-chev.open { transform: rotate(180deg); }
+
+.exp-body { padding: 14px 18px; border-top: 1.5px solid var(--border); background: var(--bg-2); display: none; border-radius: 0 0 var(--rl) var(--rl); }
+.exp-body.open { display: block; }
+.exp-text { font-size: 14px; line-height: 1.7; color: var(--text-2); font-weight: 400; }
+
+/* Dictionary cards */
+.card-head { padding: 14px 18px 10px; display: flex; align-items: center; justify-content: space-between; }
+.card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--text-3); }
+
+.pill { font-family: var(--mono); font-size: 10px; padding: 3px 10px; border-radius: 20px; font-weight: 500; }
+.pill-verb      { background: var(--blue-bg);   color: var(--blue); }
+.pill-noun      { background: var(--pink-dim);  color: var(--pink); }
+.pill-adjective { background: var(--amber-bg);  color: var(--amber); }
+.pill-adverb    { background: var(--green-bg);  color: var(--green); }
+.pill-other     { background: var(--bg-2);      color: var(--text-3); }
+
+.card-body { padding: 0 18px 16px; }
+.trans-main { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.chip { padding: 4px 11px; border-radius: 20px; border: 1px solid var(--border-md); font-size: 12px; font-family: var(--mono); color: var(--text-2); background: var(--surface-2); }
+.chip.anti { border-color: transparent; color: var(--red); background: var(--red-bg); }
+
+.conj { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 12px; }
+.conj th { text-align: left; padding: 6px 10px; background: var(--bg-3); color: var(--text-3); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--border-md); font-family: var(--font); font-weight: 700; }
+.conj td { padding: 7px 10px; color: var(--text-2); border-bottom: 1px solid var(--border); }
+.conj tr:last-child td { border-bottom: none; }
+.conj td:first-child { color: var(--text-3); font-size: 10px; text-transform: uppercase; width: 44%; }
+
+.example { padding: 11px 0; border-bottom: 1px solid var(--border); }
+.example:last-child { border-bottom: none; }
+.ex-tense { display: inline-block; font-family: var(--mono); font-size: 10px; padding: 2px 7px; border-radius: var(--rs); background: var(--pink-dim); color: var(--pink); margin-bottom: 6px; }
+.ex-orig { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
+.ex-trans { font-size: 13px; color: var(--text-2); margin-bottom: 4px; line-height: 1.5; font-weight: 400; }
+.ex-sit { font-family: var(--mono); font-size: 11px; color: var(--text-3); }
+.cultural-text { font-size: 14px; line-height: 1.7; color: var(--text-2); font-weight: 400; }
+
+/* Error / no key */
+.error-card { background: var(--red-bg); border-radius: var(--rl); padding: 16px 18px; animation: up 0.2s ease; }
+.error-title { font-weight: 700; color: var(--red); font-size: 14px; margin-bottom: 4px; }
+.error-text { font-size: 13px; color: var(--red); opacity: 0.8; font-weight: 400; }
+
+.no-key { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 32px 24px 60px; text-align: center; gap: 12px; }
+.no-key-icon { width: 52px; height: 52px; border-radius: 50%; background: var(--surface); border: 1.5px solid var(--border-md); display: flex; align-items: center; justify-content: center; color: var(--pink); }
+.no-key-icon svg { width: 22px; height: 22px; }
+.no-key-title { font-size: 18px; font-weight: 700; color: var(--text); }
+.no-key-text { font-size: 13px; color: var(--text-3); line-height: 1.6; font-weight: 400; }
+.no-key-url { font-family: var(--mono); font-size: 11px; background: var(--surface); border: 1.5px solid var(--border-md); border-radius: var(--r); padding: 10px 14px; color: var(--text-2); width: 100%; text-align: left; line-height: 1.7; }
 </style>
 </head>
 <body>
-
 <div class="app">
+
+  <!-- Header -->
   <div class="header">
     <div class="header-top">
-      <div class="logo">Le<span>x</span>io</div>
-      <div class="status-dot" id="statusDot"></div>
-    </div>
-    <div class="tabs">
-      <button class="tab active" onclick="switchTab('translate')">Translate</button>
-      <button class="tab" onclick="switchTab('dictionary')">Dictionary</button>
-    </div>
-
-    <!-- Translate input -->
-    <div class="input-area" id="translateInput">
-      <div class="lang-row">
-        <select class="lang-select" id="tSrcLang">
-          <option value="french">French</option>
-          <option value="english">English</option>
-          <option value="spanish">Spanish</option>
-          <option value="portuguese">Portuguese</option>
-        </select>
-        <span class="lang-arrow" onclick="swapLangs()" title="Swap">⇄</span>
-        <select class="lang-select" id="tTgtLang">
-          <option value="english">English</option>
-          <option value="french">French</option>
-          <option value="spanish">Spanish</option>
-          <option value="portuguese">Portuguese</option>
-        </select>
-      </div>
-      <div class="input-row">
-        <textarea class="word-input" id="tInput" placeholder="word or phrase…" rows="1"
-          oninput="autoResize(this)" onkeydown="handleKey(event, 'translate')"></textarea>
-        <button class="icon-btn" id="micBtn" onclick="toggleVoice()" title="Voice input">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18">
-            <rect x="9" y="2" width="6" height="12" rx="3"/>
-            <path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6"/>
-          </svg>
-        </button>
-        <button class="submit-btn" id="tBtn" onclick="doTranslate()" title="Translate">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-            <path d="M5 12h14M13 6l6 6-6 6"/>
-          </svg>
+      <div class="logo">Lex<span class="logo-accent">io</span></div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="dot" id="dot"></div>
+        <button class="gear-btn" id="gearBtn" aria-label="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Dictionary input -->
-    <div class="input-area" id="dictInput" style="display:none">
-      <div class="lang-row dict-row">
-        <select class="lang-select" id="dSrcLang">
-          <option value="french">French</option>
-          <option value="english">English</option>
-          <option value="spanish">Spanish</option>
-          <option value="portuguese">Portuguese</option>
-        </select>
-        <span class="lang-arrow" style="cursor:default">→</span>
-        <select class="lang-select" id="dTgtLang">
+  </div>
+
+  <!-- Settings panel -->
+  <div class="settings-panel" id="settingsPanel">
+    <div class="settings-title">Settings</div>
+    <div class="settings-row">
+      <span class="settings-label">Reference language</span>
+      <div class="select-wrap">
+        <select id="refLang">
           <option value="english">English</option>
           <option value="french">French</option>
           <option value="spanish">Spanish</option>
           <option value="portuguese">Portuguese</option>
         </select>
       </div>
-      <div class="input-row">
-        <textarea class="word-input" id="dInput" placeholder="single word…" rows="1"
-          oninput="autoResize(this)" onkeydown="handleKey(event, 'dictionary')"></textarea>
-        <button class="icon-btn" id="micBtnD" onclick="toggleVoice('d')" title="Voice input">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18">
-            <rect x="9" y="2" width="6" height="12" rx="3"/>
-            <path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6"/>
-          </svg>
-        </button>
-        <button class="submit-btn" id="dBtn" onclick="doDictionary()" title="Look up">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-            <path d="M5 12h14M13 6l6 6-6 6"/>
-          </svg>
+    </div>
+    <div class="settings-row">
+      <span class="settings-label">Model</span>
+      <div class="provider-toggle">
+        <button class="provider-btn active" id="provOpenAI">OpenAI</button>
+        <button class="provider-btn" id="provGemini">Gemini</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Translate input -->
+  <div class="input-wrap" id="wrapT">
+    <div class="intent-row">
+      <div class="intent-pill">
+        <button class="intent-btn active" id="intentHeard">I heard</button>
+        <button class="intent-btn" id="intentSay">I want to say</button>
+      </div>
+      <div class="lang-compact">
+        <select id="learnLang">
+          <option value="french">French</option>
+          <option value="english">English</option>
+          <option value="spanish">Spanish</option>
+          <option value="portuguese">Portuguese</option>
+        </select>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-container">
+        <textarea class="word-input" id="tInput" rows="1" oninput="grow(this)" onkeydown="keyHandler(event,'translate')"></textarea>
+        <button class="mic-inner" id="micT" aria-label="Voice input">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6"/></svg>
         </button>
       </div>
+      <button class="go-btn" id="goT">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Dictionary input -->
+  <div class="input-wrap" id="wrapD" style="display:none">
+    <div class="dict-lang-row">
+      <span class="dict-lang-label" id="dictLangLabel">French → English</span>
+      <div class="lang-compact">
+        <select id="dictSrcLang">
+          <option value="french">French</option>
+          <option value="english">English</option>
+          <option value="spanish">Spanish</option>
+          <option value="portuguese">Portuguese</option>
+        </select>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-container">
+        <textarea class="word-input" id="dInput" rows="1" oninput="grow(this)" onkeydown="keyHandler(event,'dictionary')"></textarea>
+        <button class="mic-inner" id="micD" aria-label="Voice input">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6"/></svg>
+        </button>
+      </div>
+      <button class="go-btn" id="goD">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
     </div>
   </div>
 
   <div class="results" id="results">
-    <div class="empty-state" id="emptyState">
-      <div class="empty-icon">✦</div>
-      <div class="empty-text">Enter a word or phrase<br>to begin</div>
+    <div class="empty">
+      <div class="empty-glyph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </div>
+      <div class="empty-text" id="emptyText">Enter a word or phrase<br>to begin</div>
     </div>
   </div>
 
+  <!-- Bottom tab bar -->
   <div class="tab-bar">
-    <button class="tab-item active" id="tabTranslate" onclick="switchTab('translate')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <path d="M5 8l4 4-4 4M3 12h8M13 8h8M17 5l4 3-4 3"/>
-        <path d="M13 16h8M17 13l4 3-4 3"/>
-      </svg>
-      <span class="tab-label">Translate</span>
+    <button class="tab-item active" id="btnT">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l4 4-4 4M13 8h6M16 5v6M13 16h6"/></svg>
+      <span>Translate</span>
     </button>
-    <button class="tab-item" id="tabDictionary" onclick="switchTab('dictionary')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
-        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
-        <path d="M9 7h6M9 11h6M9 15h4"/>
-      </svg>
-      <span class="tab-label">Dictionary</span>
+    <button class="tab-item" id="btnD">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M9 7h6M9 11h4"/></svg>
+      <span>Dictionary</span>
     </button>
   </div>
-</div>
 
+</div>
 <script>
 // ============================================================
 // Config
 // ============================================================
-const params = new URLSearchParams(window.location.search);
-const API_KEY = params.get('key') || '';
-const API_BASE = params.get('api') || window.location.origin;
+const P      = new URLSearchParams(location.search);
+const API_KEY  = P.get('key')  || '';
+const API_BASE = P.get('api')  || location.origin;
+const DEF_LEARN = P.get('src') || 'french';
+const DEF_REF   = P.get('tgt') || 'english';
+const DEF_TAB   = P.get('tab') || 'translate';
 
-// Language defaults from URL params -- set by iPhone Shortcut
-const DEFAULT_SRC = params.get('src') || 'french';
-const DEFAULT_TGT = params.get('tgt') || 'english';
-const DEFAULT_TAB = params.get('tab') || 'translate';
+const LANG_NAMES = { french:'French', english:'English', spanish:'Spanish', portuguese:'Portuguese' };
 
-let currentTab = 'translate';
-let recognition = null;
-let isRecording = false;
+let mode    = 'translate';
+let intent  = 'heard';   // 'heard' or 'say'
+let provider = 'openai';
+let rec = null, isRec = false;
 
 // ============================================================
-// Init
+// Init -- all event listeners attached here, no inline onclick
 // ============================================================
-window.addEventListener('DOMContentLoaded', () => {
-  // Apply URL parameter defaults
+document.addEventListener('DOMContentLoaded', () => {
+  // Mode buttons
+  document.getElementById('btnT').addEventListener('click', () => setMode('translate'));
+  document.getElementById('btnD').addEventListener('click', () => setMode('dictionary'));
+
+  // Intent buttons
+  document.getElementById('intentHeard').addEventListener('click', () => setIntent('heard'));
+  document.getElementById('intentSay').addEventListener('click',   () => setIntent('say'));
+
+  // Settings gear
+  const gearBtn = document.getElementById('gearBtn');
+  const settingsPanel = document.getElementById('settingsPanel');
+
+  gearBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    settingsPanel.classList.toggle('open');
+  });
+
+  // Close settings on outside click
+  document.addEventListener('click', (e) => {
+    if (!settingsPanel.classList.contains('open')) return;
+    if (settingsPanel.contains(e.target) || gearBtn.contains(e.target)) return;
+    settingsPanel.classList.remove('open');
+  });
+
+  // Provider buttons
+  document.getElementById('provOpenAI').addEventListener('click', () => setProvider('openai'));
+  document.getElementById('provGemini').addEventListener('click', () => setProvider('gemini'));
+
+  // Reference lang change -- update dict label
+  document.getElementById('refLang').addEventListener('change', updateDictLabel);
+  document.getElementById('dictSrcLang').addEventListener('change', updateDictLabel);
+
+  // Go buttons
+  document.getElementById('goT').addEventListener('click', doTranslate);
+  document.getElementById('goD').addEventListener('click', doDictionary);
+
+  // Mic buttons
+  document.getElementById('micT').addEventListener('click', () => voice('t'));
+  document.getElementById('micD').addEventListener('click', () => voice('d'));
+
+  // Learn lang
+  document.getElementById('learnLang').addEventListener('change', updatePlaceholder);
+
+  // Apply URL defaults
   applyDefaults();
 
-  if (!API_KEY) {
-    showNoKey();
-    return;
-  }
+  if (!API_KEY) { showNoKey(); return; }
   checkHealth();
 });
 
 function applyDefaults() {
-  // Set all language selectors from URL params
-  const selectors = {
-    tSrcLang: DEFAULT_SRC,
-    tTgtLang: DEFAULT_TGT,
-    dSrcLang: DEFAULT_SRC,
-    dTgtLang: DEFAULT_TGT
-  };
+  setVal('learnLang', DEF_LEARN);
+  setVal('refLang',   DEF_REF);
+  setVal('dictSrcLang', DEF_LEARN);
+  updatePlaceholder();
+  updateDictLabel();
+  if (DEF_TAB === 'dictionary') setMode('dictionary');
+}
 
-  Object.entries(selectors).forEach(([id, val]) => {
-    const el = document.getElementById(id);
-    if (el) {
-      // Only set if the option exists
-      const exists = Array.from(el.options).some(o => o.value === val);
-      if (exists) el.value = val;
-    }
-  });
+function setVal(id, v) {
+  const el = document.getElementById(id);
+  if (el && [...el.options].some(o => o.value === v)) el.value = v;
+}
 
-  // Switch to default tab
-  if (DEFAULT_TAB === 'dictionary') {
-    switchTab('dictionary');
+function setProvider(p) {
+  provider = p;
+  document.getElementById('provOpenAI').classList.toggle('active', p === 'openai');
+  document.getElementById('provGemini').classList.toggle('active', p === 'gemini');
+}
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('btnT').classList.toggle('active', m === 'translate');
+  document.getElementById('btnD').classList.toggle('active', m === 'dictionary');
+  document.getElementById('wrapT').style.display = m === 'translate' ? 'block' : 'none';
+  document.getElementById('wrapD').style.display = m === 'dictionary' ? 'block' : 'none';
+  showEmpty();
+}
+
+function setIntent(i) {
+  intent = i;
+  document.getElementById('intentHeard').classList.toggle('active', i === 'heard');
+  document.getElementById('intentSay').classList.toggle('active',   i === 'say');
+  updatePlaceholder();
+  showEmpty();
+}
+
+function updatePlaceholder() {
+  const lang = LANG_NAMES[document.getElementById('learnLang').value] || 'French';
+  const ref  = LANG_NAMES[document.getElementById('refLang').value]   || 'English';
+  const inp  = document.getElementById('tInput');
+  if (!inp) return;
+  if (intent === 'heard') {
+    inp.placeholder = `A ${lang} word or phrase you heard…`;
+  } else {
+    inp.placeholder = `Something you want to say in ${lang}…`;
   }
+  updateEmptyText(lang, ref);
+}
+
+function updateEmptyText(lang, ref) {
+  const el = document.getElementById('emptyText');
+  if (!el) return;
+  if (intent === 'heard') {
+    el.innerHTML = `Heard something in ${lang}?<br>Type it to understand it`;
+  } else {
+    el.innerHTML = `Want to say something in ${lang}?<br>Type it in ${ref}`;
+  }
+}
+
+function updateDictLabel() {
+  const src = document.getElementById('dictSrcLang').value;
+  const ref = document.getElementById('refLang').value;
+  const el  = document.getElementById('dictLangLabel');
+  if (el) el.textContent = `${LANG_NAMES[src] || src} → ${LANG_NAMES[ref] || ref}`;
 }
 
 async function checkHealth() {
   try {
     const r = await fetch(`${API_BASE}/health`);
-    document.getElementById('statusDot').className = r.ok ? 'status-dot ok' : 'status-dot error';
-  } catch {
-    document.getElementById('statusDot').className = 'status-dot error';
-  }
+    document.getElementById('dot').className = 'dot ' + (r.ok ? 'ok' : 'error');
+  } catch { document.getElementById('dot').className = 'dot error'; }
 }
 
 // ============================================================
-// Tab switching
+// Voice
 // ============================================================
-function switchTab(tab) {
-  currentTab = tab;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
-
-  if (tab === 'translate') {
-    document.querySelectorAll('.tab')[0].classList.add('active');
-    document.getElementById('tabTranslate').classList.add('active');
-    document.getElementById('translateInput').style.display = 'block';
-    document.getElementById('dictInput').style.display = 'none';
-  } else {
-    document.querySelectorAll('.tab')[1].classList.add('active');
-    document.getElementById('tabDictionary').classList.add('active');
-    document.getElementById('translateInput').style.display = 'none';
-    document.getElementById('dictInput').style.display = 'block';
-  }
-
-  showEmpty();
-}
-
-// ============================================================
-// Voice input
-// ============================================================
-function toggleVoice(prefix = '') {
-  const btnId = prefix === 'd' ? 'micBtnD' : 'micBtn';
-  const inputId = prefix === 'd' ? 'dInput' : 'tInput';
-  const btn = document.getElementById(btnId);
+function voice(p) {
+  const mic  = document.getElementById(p === 'd' ? 'micD' : 'micT');
+  const inp  = document.getElementById(p === 'd' ? 'dInput' : 'tInput');
+  const lang = p === 'd'
+    ? document.getElementById('dictSrcLang').value
+    : document.getElementById('learnLang').value;
 
   if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-    alert('Voice input is not supported in this browser. Use Safari on iOS.');
-    return;
+    alert('Voice requires Safari on iOS.'); return;
   }
+  if (isRec) { rec?.stop(); isRec = false; mic.classList.remove('recording'); return; }
 
-  if (isRecording) {
-    recognition && recognition.stop();
-    isRecording = false;
-    btn.classList.remove('recording');
-    return;
-  }
-
+  const lm = { french:'fr-FR', spanish:'es-ES', portuguese:'pt-PT', english:'en-US' };
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  recognition = new SR();
-  recognition.lang = document.getElementById(prefix === 'd' ? 'dSrcLang' : 'tSrcLang').value === 'french' ? 'fr-FR' :
-                     document.getElementById(prefix === 'd' ? 'dSrcLang' : 'tSrcLang').value === 'spanish' ? 'es-ES' :
-                     document.getElementById(prefix === 'd' ? 'dSrcLang' : 'tSrcLang').value === 'portuguese' ? 'pt-PT' : 'en-US';
-  recognition.continuous = false;
-  recognition.interimResults = false;
-
-  recognition.onresult = (e) => {
-    document.getElementById(inputId).value = e.results[0][0].transcript;
-    autoResize(document.getElementById(inputId));
-  };
-
-  recognition.onend = () => {
-    isRecording = false;
-    btn.classList.remove('recording');
-  };
-
-  recognition.start();
-  isRecording = true;
-  btn.classList.add('recording');
-}
-
-// ============================================================
-// Language swap
-// ============================================================
-function swapLangs() {
-  const src = document.getElementById('tSrcLang');
-  const tgt = document.getElementById('tTgtLang');
-  const tmp = src.value;
-  src.value = tgt.value;
-  tgt.value = tmp;
-}
-
-// ============================================================
-// Auto resize textarea
-// ============================================================
-function autoResize(el) {
-  el.style.height = 'auto';
-  el.style.height = Math.min(el.scrollHeight, 100) + 'px';
-}
-
-function handleKey(e, mode) {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    mode === 'translate' ? doTranslate() : doDictionary();
-  }
-}
-
-// ============================================================
-// API calls
-// ============================================================
-async function doTranslate() {
-  const input = document.getElementById('tInput').value.trim();
-  if (!input) return;
-
-  const src = document.getElementById('tSrcLang').value;
-  const tgt = document.getElementById('tTgtLang').value;
-
-  setLoading(input);
-
-  try {
-    const r = await fetch(`${API_BASE}/translate`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-API-Key': API_KEY
-      },
-      body: JSON.stringify({ input, source_language: src, target_language: tgt })
-    });
-
-    const data = await r.json();
-
-    if (!r.ok) {
-      showError(data.detail || 'Something went wrong');
-      return;
-    }
-
-    renderTranslate(data);
-  } catch (err) {
-    showError('Could not reach the API. Check your connection.');
-  }
-}
-
-async function doDictionary() {
-  const word = document.getElementById('dInput').value.trim();
-  if (!word) return;
-
-  const src = document.getElementById('dSrcLang').value;
-  const tgt = document.getElementById('dTgtLang').value;
-
-  setLoading(word);
-
-  try {
-    const r = await fetch(`${API_BASE}/dictionary`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-API-Key': API_KEY
-      },
-      body: JSON.stringify({ word, source_language: src, target_language: tgt })
-    });
-
-    const data = await r.json();
-
-    if (!r.ok) {
-      showError(data.detail || 'Something went wrong');
-      return;
-    }
-
-    renderDictionary(data);
-  } catch (err) {
-    showError('Could not reach the API. Check your connection.');
-  }
-}
-
-// ============================================================
-// Render: Translate
-// ============================================================
-function renderTranslate(data) {
-  const results = document.getElementById('results');
-  let html = '';
-
-  const srcLabel = cap(data.source_language);
-  const tgtLabel = cap(data.target_language);
-
-  html += `<div style="padding: 4px 0 12px;">
-    <div class="result-word">${esc(data.input)}</div>
-    <div class="result-meta">${srcLabel} → ${tgtLabel} · via ${data.provider}</div>
-  </div>`;
-
-  // Warning
-  if (data.usage_warning) {
-    html += `<div class="warning-bar">⚠ ${esc(data.usage_warning)}</div>`;
-  }
-
-  // Register variants
-  const badgeMap = { formal: 'badge-formal', informal: 'badge-informal', slang: 'badge-slang' };
-
-  data.variants.forEach(v => {
-    const badge = badgeMap[v.style?.toLowerCase()] || 'badge-other';
-    html += `<div class="card">
-      <div class="card-header">
-        <span class="card-title">${esc(v.style || 'variant')}</span>
-        <span class="card-badge ${badge}">${esc(v.style || '')}</span>
-      </div>
-      <div class="card-body">
-        <div class="translation-main">${esc(v.translation)}</div>
-        <div class="translation-notes">${esc(v.notes)}</div>
-      </div>
-    </div>`;
-  });
-
-  // Literal meaning
-  if (data.literal_meaning) {
-    html += expandCard('🔤 Literal meaning', esc(data.literal_meaning));
-  }
-
-  // Fun fact
-  if (data.fun_fact) {
-    html += expandCard('✦ Fun fact', esc(data.fun_fact));
-  }
-
-  results.innerHTML = html;
-  attachExpandListeners();
-}
-
-// ============================================================
-// Render: Dictionary
-// ============================================================
-function renderDictionary(data) {
-  const results = document.getElementById('results');
-  let html = '';
-
-  html += `<div style="padding: 4px 0 12px;">
-    <div class="result-word">${esc(data.word)}</div>
-    <div class="result-meta">${cap(data.source_language)} → ${cap(data.target_language)} · via ${data.provider}</div>
-  </div>`;
-
-  const posBadge = { verb: 'badge-verb', noun: 'badge-noun', adjective: 'badge-adjective', adverb: 'badge-adverb' };
-
-  data.definitions.forEach((def, i) => {
-    const badge = posBadge[def.part_of_speech?.toLowerCase()] || 'badge-other';
-
-    let inner = `<div class="card-header">
-      <span class="card-title">${esc(def.part_of_speech)}</span>
-      <span class="card-badge ${badge}">${esc(def.part_of_speech)}</span>
-    </div>
-    <div class="card-body">
-      <div class="translation-main">${esc(def.translation)}</div>`;
-
-    // Synonyms
-    if (def.synonyms && def.synonyms.length) {
-      inner += `<div class="word-chips">`;
-      def.synonyms.forEach(s => { inner += `<span class="word-chip">${esc(s)}</span>`; });
-      inner += `</div>`;
-    }
-
-    // Antonyms
-    if (def.antonyms && def.antonyms.length) {
-      inner += `<div class="word-chips" style="margin-top:6px">`;
-      def.antonyms.forEach(a => { inner += `<span class="word-chip antonym">${esc(a)}</span>`; });
-      inner += `</div>`;
-    }
-
-    inner += `</div>`;
-
-    // Usage section
-    const usage = def.usage;
-    if (usage) {
-      // Grammatical notes
-      if (usage.part_of_speech_notes) {
-        inner += expandCardInner('📖 Grammatical notes', esc(usage.part_of_speech_notes));
-      }
-
-      // Forms / conjugations
-      if (usage.forms && Object.keys(usage.forms).length > 0) {
-        const formRows = Object.entries(usage.forms).map(([k, v]) =>
-          `<tr><td>${formatKey(k)}</td><td>${esc(v)}</td></tr>`
-        ).join('');
-        inner += expandCardInner('⊞ Forms', `<table class="conj-table">
-          <thead><tr><th>Person / Form</th><th>Conjugation</th></tr></thead>
-          <tbody>${formRows}</tbody>
-        </table>`);
-      }
-
-      // Sentence examples
-      if (usage.sentence_examples && usage.sentence_examples.length) {
-        let exHtml = '';
-        usage.sentence_examples.forEach(ex => {
-          exHtml += `<div class="example">`;
-          if (ex.tense_or_form) {
-            exHtml += `<div class="example-tense">${esc(ex.tense_or_form)}</div>`;
-          }
-          exHtml += `<div class="example-original">${esc(ex.original)}</div>
-            <div class="example-translation">${esc(ex.translation)}</div>
-            <div class="example-situation">${esc(ex.situation)}</div>
-          </div>`;
-        });
-        inner += expandCardInner('💬 Examples', exHtml);
-      }
-
-      // Cultural context
-      if (def.cultural_context) {
-        inner += expandCardInner('🌍 Cultural context', `<div class="cultural-text">${esc(def.cultural_context)}</div>`);
-      }
-    }
-
-    html += `<div class="card">${inner}</div>`;
-  });
-
-  results.innerHTML = html;
-  attachExpandListeners();
+  rec = new SR();
+  rec.lang = lm[lang] || 'fr-FR';
+  rec.onresult = e => { inp.value = e.results[0][0].transcript; grow(inp); };
+  rec.onend = () => { isRec = false; mic.classList.remove('recording'); };
+  rec.start(); isRec = true; mic.classList.add('recording');
 }
 
 // ============================================================
 // Helpers
 // ============================================================
-function expandCard(label, content) {
-  const id = 'exp_' + Math.random().toString(36).substr(2, 6);
-  return `<div class="card">
-    <div class="expand-row" data-target="${id}">
-      <span class="expand-label">${label}</span>
-      <span class="expand-arrow" id="arr_${id}">▾</span>
-    </div>
-    <div class="expand-content" id="${id}">
-      <div class="expand-text">${content}</div>
-    </div>
-  </div>`;
+function grow(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 100) + 'px'; }
+
+function keyHandler(e, m) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    m === 'translate' ? doTranslate() : doDictionary();
+  }
 }
 
-function expandCardInner(label, content) {
-  const id = 'exp_' + Math.random().toString(36).substr(2, 6);
-  return `<div class="expand-row" data-target="${id}">
-    <span class="expand-label">${label}</span>
-    <span class="expand-arrow" id="arr_${id}">▾</span>
-  </div>
-  <div class="expand-content" id="${id}">
-    ${content}
-  </div>`;
+function esc(s) { return s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''; }
+function cap(s) { return s ? s[0].toUpperCase() + s.slice(1) : ''; }
+function uid()  { return 'x' + Math.random().toString(36).slice(2,7); }
+
+function setLoading(w) {
+  document.getElementById('results').innerHTML = `<div class="loading"><div class="spinner"></div><div class="loading-word">${esc(w)}</div></div>`;
 }
 
-function attachExpandListeners() {
-  document.querySelectorAll('.expand-row').forEach(row => {
-    row.addEventListener('click', () => {
-      const targetId = row.getAttribute('data-target');
-      const content = document.getElementById(targetId);
-      const arrow = document.getElementById('arr_' + targetId);
-      if (!content) return;
-      content.classList.toggle('open');
-      arrow && arrow.classList.toggle('open');
+function showEmpty() {
+  const lang = LANG_NAMES[document.getElementById('learnLang')?.value] || 'French';
+  const ref  = LANG_NAMES[document.getElementById('refLang')?.value]   || 'English';
+  let txt = intent === 'heard'
+    ? `Heard something in ${lang}?<br>Type it to understand it`
+    : `Want to say something in ${lang}?<br>Type it in ${ref}`;
+  if (mode === 'dictionary') txt = `Enter a single word<br>to look it up`;
+  document.getElementById('results').innerHTML = `<div class="empty"><div class="empty-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><div class="empty-text">${txt}</div></div>`;
+}
+
+function showErr(msg) {
+  document.getElementById('results').innerHTML = `<div class="error-card"><div class="error-title">Something went wrong</div><div class="error-text">${esc(msg)}</div></div>`;
+}
+
+function showNoKey() {
+  document.getElementById('results').innerHTML = `<div class="no-key"><div class="no-key-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div><div class="no-key-title">API key required</div><div class="no-key-text">Open Lexio via your iPhone Shortcut which passes your key automatically.</div><div class="no-key-url">https://your-url.railway.app?key=YOUR_KEY&amp;src=french&amp;tgt=english</div></div>`;
+  document.getElementById('dot').className = 'dot error';
+}
+
+// SVG icons
+const iStar  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+const iLit   = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>`;
+const iBook  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>`;
+const iGrid  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`;
+const iMsg   = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`;
+const iGlobe = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>`;
+const iChev  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 9l6 6 6-6"/></svg>`;
+
+function expRow(icon, label, content) {
+  const id = uid();
+  return `<div class="exp-row" data-t="${id}"><div class="exp-icon">${icon}</div><span class="exp-label">${label}</span><div class="exp-chev" id="ch_${id}">${iChev}</div></div><div class="exp-body" id="${id}">${content}</div>`;
+}
+
+function attachExpand() {
+  document.querySelectorAll('.exp-row').forEach(r => {
+    r.addEventListener('click', () => {
+      const id = r.dataset.t;
+      document.getElementById(id)?.classList.toggle('open');
+      document.getElementById('ch_' + id)?.classList.toggle('open');
     });
   });
 }
 
-function formatKey(key) {
-  return key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+// ============================================================
+// Translate
+// ============================================================
+async function doTranslate() {
+  const input = document.getElementById('tInput').value.trim();
+  if (!input) return;
+
+  const learnLang = document.getElementById('learnLang').value;
+  const refLang   = document.getElementById('refLang').value;
+
+  // Direction based on intent
+  const srcLang = intent === 'heard' ? learnLang : refLang;
+  const tgtLang = intent === 'heard' ? refLang   : learnLang;
+
+  setLoading(input);
+  try {
+    const headers = { 'Content-Type': 'application/json', 'X-API-Key': API_KEY };
+    if (provider === 'gemini') headers['X-Model-Provider'] = 'gemini';
+
+    const r = await fetch(`${API_BASE}/translate`, {
+      method: 'POST', headers,
+      body: JSON.stringify({ input, source_language: srcLang, target_language: tgtLang })
+    });
+    const d = await r.json();
+    if (!r.ok) { showErr(d.detail || 'Request failed'); return; }
+    renderTranslate(d);
+  } catch { showErr('Could not reach the API.'); }
 }
 
-function cap(str) {
-  return str ? str.charAt(0).toUpperCase() + str.slice(1) : '';
+function renderTranslate(d) {
+  const variants = d.variants || [];
+  const order = ['informal','formal','slang'];
+  const sorted = order.map(s => variants.find(v => (v.style||'').toLowerCase() === s)).filter(Boolean);
+  const rest = variants.filter(v => !order.includes((v.style||'').toLowerCase()));
+  const all = [...sorted, ...rest];
+
+  let h = `<div style="padding:4px 0 12px">
+    <div class="res-word">${esc(d.input)}</div>
+    <div class="res-meta">${cap(d.source_language)} → ${cap(d.target_language)} · ${d.provider}</div>
+  </div>`;
+
+  if (d.usage_warning) h += `<div class="warning">⚠ ${esc(d.usage_warning)}</div>`;
+
+  if (all.length) {
+    h += `<div class="trans-card">`;
+    all.forEach((v, i) => {
+      const s = (v.style||'').toLowerCase();
+      const isLead = i === 0;
+      h += `<div class="reg-block">
+        <div class="reg-label ${s}">${esc(v.style || 'variant')}</div>
+        <div class="reg-translation${isLead ? ' lead' : ''}">${esc(v.translation)}</div>
+        <div class="reg-notes">${esc(v.notes)}</div>
+      </div>`;
+    });
+    h += `</div>`;
+  }
+
+  if (d.fun_fact)        h += `<div class="card">${expRow(iStar,'Fun fact',`<div class="exp-text">${esc(d.fun_fact)}</div>`)}</div>`;
+  if (d.literal_meaning) h += `<div class="card">${expRow(iLit,'Literal meaning',`<div class="exp-text">${esc(d.literal_meaning)}</div>`)}</div>`;
+
+  document.getElementById('results').innerHTML = h;
+  attachExpand();
 }
 
-function esc(str) {
-  if (!str) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+// ============================================================
+// Dictionary
+// ============================================================
+async function doDictionary() {
+  const word = document.getElementById('dInput').value.trim();
+  if (!word) return;
+
+  const srcLang = document.getElementById('dictSrcLang').value;
+  const tgtLang = document.getElementById('refLang').value;
+
+  setLoading(word);
+  try {
+    const headers = { 'Content-Type': 'application/json', 'X-API-Key': API_KEY };
+    if (provider === 'gemini') headers['X-Model-Provider'] = 'gemini';
+
+    const r = await fetch(`${API_BASE}/dictionary`, {
+      method: 'POST', headers,
+      body: JSON.stringify({ word, source_language: srcLang, target_language: tgtLang })
+    });
+    const d = await r.json();
+    if (!r.ok) { showErr(d.detail || 'Request failed'); return; }
+    renderDictionary(d);
+  } catch { showErr('Could not reach the API.'); }
 }
 
-function setLoading(word) {
-  document.getElementById('results').innerHTML = `
-    <div class="loading">
-      <div class="spinner"></div>
-      <div class="loading-word">${esc(word)}</div>
-    </div>`;
-}
+function renderDictionary(d) {
+  const pm = { verb:'pill-verb', noun:'pill-noun', adjective:'pill-adjective', adverb:'pill-adverb' };
+  let h = `<div style="padding:4px 0 12px">
+    <div class="res-word">${esc(d.word)}</div>
+    <div class="res-meta">${cap(d.source_language)} → ${cap(d.target_language)} · ${d.provider}</div>
+  </div>`;
 
-function showEmpty() {
-  document.getElementById('results').innerHTML = `
-    <div class="empty-state">
-      <div class="empty-icon">✦</div>
-      <div class="empty-text">Enter a word or phrase<br>to begin</div>
-    </div>`;
-}
+  (d.definitions||[]).forEach(def => {
+    const pos = (def.part_of_speech||'').toLowerCase();
+    let inner = `<div class="card-head">
+      <span class="card-label">${esc(def.part_of_speech)}</span>
+      <span class="pill ${pm[pos]||'pill-other'}">${esc(def.part_of_speech)}</span>
+    </div>
+    <div class="card-body">
+      <div class="trans-main">${esc(def.translation)}</div>`;
 
-function showError(msg) {
-  document.getElementById('results').innerHTML = `
-    <div class="error-card">
-      <div class="error-title">Error</div>
-      <div class="error-text">${esc(msg)}</div>
-    </div>`;
-}
+    if (def.synonyms?.length) inner += `<div class="chips">${def.synonyms.map(s=>`<span class="chip">${esc(s)}</span>`).join('')}</div>`;
+    if (def.antonyms?.length) inner += `<div class="chips" style="margin-top:6px">${def.antonyms.map(a=>`<span class="chip anti">${esc(a)}</span>`).join('')}</div>`;
+    inner += `</div>`;
 
-function showNoKey() {
-  document.getElementById('results').innerHTML = `
-    <div class="no-key">
-      <div class="no-key-icon">🔑</div>
-      <div class="no-key-title">API key required</div>
-      <div class="no-key-text">Open Lexio via the iPhone Shortcut which passes your API key automatically. Or add ?key=YOUR_KEY to the URL.</div>
-      <div class="no-key-code">https://your-railway-url.railway.app?key=YOUR_API_KEY</div>
-    </div>`;
-  document.getElementById('statusDot').className = 'status-dot error';
+    const u = def.usage;
+    if (u) {
+      if (u.part_of_speech_notes) inner += expRow(iBook,'Grammatical notes',`<div class="exp-text">${esc(u.part_of_speech_notes)}</div>`);
+      if (u.forms && Object.keys(u.forms).length) {
+        const rows = Object.entries(u.forms).map(([k,v])=>`<tr><td>${k.replace(/_/g,' ')}</td><td>${esc(v)}</td></tr>`).join('');
+        inner += expRow(iGrid,'Forms',`<table class="conj"><thead><tr><th>Form</th><th>Value</th></tr></thead><tbody>${rows}</tbody></table>`);
+      }
+      if (u.sentence_examples?.length) {
+        const exHtml = u.sentence_examples.map(ex=>`<div class="example">${ex.tense_or_form?`<div class="ex-tense">${esc(ex.tense_or_form)}</div>`:''}<div class="ex-orig">${esc(ex.original)}</div><div class="ex-trans">${esc(ex.translation)}</div><div class="ex-sit">${esc(ex.situation)}</div></div>`).join('');
+        inner += expRow(iMsg,'Examples',exHtml);
+      }
+      if (def.cultural_context) inner += expRow(iGlobe,'Cultural context',`<div class="cultural-text">${esc(def.cultural_context)}</div>`);
+    }
+    h += `<div class="card">${inner}</div>`;
+  });
+
+  document.getElementById('results').innerHTML = h;
+  attachExpand();
 }
 </script>
 </body>
