@@ -187,7 +187,8 @@ async def translate(
     messages = build_translate_messages(
         request.input,
         source_language,
-        target_language
+        target_language,
+        request.intent
     )
     result = provider.complete(messages)
 

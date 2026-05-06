@@ -93,6 +93,14 @@ class TranslateRequest(BaseModel):
         default=DEFAULT_TRANSLATE_TARGET_LANGUAGE,
         description=f"Target language. Supported: {SUPPORTED_LANGUAGES}"
     )
+    intent: str = Field(default="say", description="heard or say")
+
+    @field_validator("intent")
+    @classmethod
+    def validate_intent(cls, v):
+        if v not in ["heard", "say"]:
+            raise ValueError("Intent must be 'heard' or 'say'")
+        return v
 
     @field_validator("source_language", "target_language")
     @classmethod

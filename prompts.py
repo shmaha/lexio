@@ -334,16 +334,23 @@ def build_dictionary_messages(
 def build_translate_messages(
     input: str,
     source_language: str,
-    target_language: str
+    target_language: str,
+    intent: str = "say"
 ) -> list[dict]:
-    """
-    Builds messages for the translate endpoint.
-    Injects source and target language into the system prompt.
-    """
-    system_prompt = \
-        f"Translate from {source_language.capitalize()} " \
-        f"to {target_language.capitalize()}.\n\n" \
-        f"{TRANSLATE_SYSTEM_PROMPT}"
+    if intent == "heard":
+        system_prompt = \
+            f"The user heard an expression in {source_language.capitalize()} " \
+            f"and wants to understand it in {target_language.capitalize()}. " \
+            f"Explain what it means naturally in {target_language.capitalize()}. " \
+            f"The variants should show different contexts where a native " \
+            f"{source_language.capitalize()} speaker would use this expression " \
+            f"-- not translations. Notes should be in {target_language.capitalize()}.\n\n" \
+            f"{TRANSLATE_SYSTEM_PROMPT}"
+    else:
+        system_prompt = \
+            f"Translate from {source_language.capitalize()} " \
+            f"to {target_language.capitalize()}.\n\n" \
+            f"{TRANSLATE_SYSTEM_PROMPT}"
 
     return [
         {"role": "system", "content": system_prompt},

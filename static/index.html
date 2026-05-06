@@ -801,7 +801,7 @@ async function doTranslate() {
 
     const r = await fetch(`${API_BASE}/translate`, {
       method: 'POST', headers,
-      body: JSON.stringify({ input, source_language: srcLang, target_language: tgtLang })
+      body: JSON.stringify({ input, source_language: srcLang, target_language: tgtLang, intent: intent })
     });
     const d = await r.json();
     if (!r.ok) { showErr(d.detail || 'Request failed'); return; }
